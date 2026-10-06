@@ -40,7 +40,7 @@ pipeline {
             steps {
                 bat '''
                     docker run -d --name %CONTAINER_NAME% -p 3001:%APP_PORT% %IMAGE_NAME%:build-%BUILD_NUMBER%
-                    timeout /t 5 /nobreak
+                     ping 127.0.0.1 -n 6 > nul
                     curl -f http://localhost:3001/health 
                 ''' 
             } 
